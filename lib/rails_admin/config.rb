@@ -65,7 +65,9 @@ module RailsAdmin
       #
       # @see RailsAdmin::Config.model
       attr_reader :registry
-
+      
+      # Configuration option to specify which text to display in the footer of Rails Admin
+      attr_accessor :footer
       # Setup authentication to be run as a before filter
       # This is run inside the controller instance so you can setup any authentication you need to
       #
@@ -289,6 +291,7 @@ module RailsAdmin
         @label_methods = [:name, :title]
         @main_app_name = Proc.new { [Rails.application.engine_name.titleize.chomp(' Application'), 'Admin'] }
         @registry = {}
+        @footer = nil
         RailsAdmin::Config::Actions.reset
       end
 
